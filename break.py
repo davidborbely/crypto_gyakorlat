@@ -7,7 +7,7 @@ alphabet = string.ascii_uppercase # uppercase alphabet
 all_startpositions = itertools.product(alphabet, repeat=3) # all 26^3 possible start ring positions
 
 rotors = ['I', 'II', 'III', 'IV', 'V']
-all_rotors = itertools.product(rotors, repeat=3) # all 512 possible rotor combinations
+all_rotors = itertools.product(rotors, repeat=3) # all 125 possible rotor combinations
 
 
 # exercise 1
