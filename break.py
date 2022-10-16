@@ -7,13 +7,15 @@ alphabet = string.ascii_uppercase # uppercase alphabet
 all_startpositions = itertools.product(alphabet, repeat=3) # all 26^3 possible start ring positions
 
 rotors = ['I', 'II', 'III', 'IV', 'V']
-all_rotors = itertools.product(rotors, repeat=3) # all 125 possible rotor combinations
+all_rotors = list(itertools.product(rotors, repeat=3)) # all 125 possible rotor combinations
 
 
 # exercise 1
 msg = 'aaaaa'.upper()
 desired_secret = 'eqdir'.upper()
-for sp in all_startpositions:
+
+
+for sp in itertools.product(alphabet, repeat=3):
     engine = EnigmaMachine.from_key_sheet(
         rotors = 'I V III',
         reflector = 'B', 
@@ -24,11 +26,12 @@ for sp in all_startpositions:
         print(sp)
         break
 
+
 # exercise 2
 msg = 'aaaaa'.upper()
 desired_secret = 'eeeek'.upper()
-for r in all_rotors: # (26**3)*(8**3) ~ 10M, can be ran on modern computers
-    for sp in all_startpositions:
+for sp in itertools.product(alphabet, repeat=3): # (26**3)*(8**3) ~ 10M, can be ran on modern computers
+    for r in itertools.product(rotors, repeat=3):
         engine = EnigmaMachine.from_key_sheet(
         rotors = ' '.join(r),
         reflector = 'B', 
