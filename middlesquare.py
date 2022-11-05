@@ -1,6 +1,3 @@
-import itertools
-
-
 def get_next_element(num):
     # we square to get 2N digits, if not 2N digits then pad at the front. Return middle 6 digits
     return  int(str(num*num).zfill(12)[3:-3])
