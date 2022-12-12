@@ -1,5 +1,8 @@
-initial_state = '11011110'
-desired_result = '01010101'
+# initial_state_backwards = '11011110'
+# desired_result_backwards = '01010101'
+
+desired_result = '11011110'
+initial_state = '01010101'
 
 # XOR lambda
 xor2 = lambda a, b : str(int(bool(int(a)) ^ bool(int(b))))
@@ -10,12 +13,19 @@ def xor(*args):
     return current_value
 
 
-# XOR at positions to get next elem, and push to the start of the sequence
+# # XOR at positions to get next elem, and push to the start of the sequence
+# def step_backwards(state, *positions):
+#     # get values to be xored
+#     values = [state[p] for p in positions]
+
+#     return xor(*values) + state[:-1]
+
 def step(state, *positions):
     # get values to be xored
     values = [state[p] for p in positions]
 
-    return xor(*values) + state[:-1]
+    return  state[1:] + xor(*values)
+
 
 def step_8(initial_state, *positions):
     state = initial_state
